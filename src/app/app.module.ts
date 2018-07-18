@@ -1,30 +1,37 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
+import {MarketComponent} from './market/market.component';
+import {TradersComponent} from './traders/traders.component';
+import {RoutingModule} from './routing/routing.module';
+import {HttpClientModule} from '@angular/common/http';
+import { TraderDetailsComponent } from './trader-details/trader-details.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { StocksComponent } from './trader-details/stocks/stocks.component';
+import {MatAutocompleteModule, MatInputModule, MatOptionModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MarketComponent,
+    TradersComponent,
+    TraderDetailsComponent,
+    StocksComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatOptionModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  stocks: Stock[];
-  ngOnInit()
-  {
-    this.stocks = this.getMockStocks();
-  }
-  private getMockStocks(): Stock[]
-  {
-    let stocks: Stock[] = [];
-    stocks.push(new Stock('BA', 'Boeing'));
-    stocks.push(new Stock('CAT', 'Caterpillar'));
-    stocks.push(new Stock('KO', 'Coca-Cola'));
-    return stocks;
-  }
 }
