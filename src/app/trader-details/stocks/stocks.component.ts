@@ -18,7 +18,7 @@ export class StocksComponent implements OnInit {
   filteredStocks: Observable<Stock[]>;
   stocks: Stock[];
 
-  private selected: Stock;
+  selected: Stock = null;
 
   constructor(private marketService: MarketServiceImpl) {
   }
@@ -30,7 +30,7 @@ export class StocksComponent implements OnInit {
       map(val => val ? this.filter(val) : this.stocks.slice())
     );
     this.stockInput.valueChanges.pipe(
-        startWith('')
+      startWith('')
     ).subscribe(symbol => {
       let stock = this.findStock(symbol);
       if (stock != null) {
@@ -48,8 +48,8 @@ export class StocksComponent implements OnInit {
     return this.stocks.filter(stock => new RegExp(`^${val}`, 'gi')
       .test(stock.getSymbol()));
   }
-  clean()
-  {
+
+  clean() {
     this.stockInput.setValue('');
     this.selected = null;
   }

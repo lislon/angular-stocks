@@ -2,7 +2,7 @@ import {Trade} from './Trade';
 import {RoundUtil} from '../utils/RoundUtil';
 
 export class Trader {
-  private portfolio: Trade[];
+  private readonly portfolio: Trade[];
 
   constructor(private name: string) {
     this.portfolio = [];
